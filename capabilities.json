@@ -24,10 +24,26 @@
             ]
         },
         {
+            "name": "Order",
+            "kind": "Measure",
+            "displayName": "Order",
+            "displayNameKey": "Visual_Order",
+            "requiredTypes": [
+                {
+                    "numeric": true
+                }
+            ]
+        },
+        {
             "name": "SourceLabels",
             "kind": "Measure",
             "displayName": "Source labels",
             "displayNameKey": "Visual_SourceLabels"
+        },
+        {
+            "displayName": "Tooltips",
+            "name": "tooltipData",
+            "kind": "GroupingOrMeasure"
         }
     ],
     "dataViewMappings": [
@@ -49,6 +65,13 @@
                     "Weight": {
                         "min": 0,
                         "max": 1
+                    },
+                    "Order": {
+                        "min": 0,
+                        "max": 1
+                    },
+                    "tooltipData": {
+                        "max": 4
                     }
                 }
             ],
@@ -77,6 +100,16 @@
                         {
                             "for": {
                                 "in": "Weight"
+                            }
+                        },
+                        {
+                            "for": {
+                                "in": "Order"
+                            }
+                        },
+                        {
+                            "for": {
+                                "in": "tooltipData"
                             }
                         }
                     ]
@@ -142,6 +175,13 @@
                              "labelDisplayUnits": true
                          }
                     }
+                 },
+                 "nodetext" : {
+                     "displayName": "Link Text",
+                     "displayNameKey": "Visual_LabelsNodeText",
+                     "type": {
+                         "text": true
+                     }
                  }
             }
         },
@@ -182,6 +222,13 @@
             "displayName": "Links",
             "displayNameKey": "Visual_Links",
             "properties": {
+                "show": {
+                    "displayName": "Show",
+                    "displayNameKey": "Visual_Show",
+                    "type": {
+                        "bool": true
+                    }
+                },
                 "fill": {
                     "displayName": "Color",
                     "displayNameKey": "Visual_LabelsFill",
@@ -191,6 +238,13 @@
                                 "color": true
                             }
                         }
+                    }
+                },
+                "linktext" : {
+                    "displayName": "Link Text",
+                    "displayNameKey": "Visual_LabelsLinkText",
+                    "type": {
+                        "text": true
                     }
                 }
             }
@@ -283,6 +337,15 @@
                 }
             }
         }
+    },
+    "tooltips": {
+        "supportedTypes": {
+            "default": true,
+            "canvas": true
+        },
+        "roles": [
+            "tooltips"
+        ]
     },
     "sorting": {
         "implicit": {

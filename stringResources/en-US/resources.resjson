@@ -2,6 +2,8 @@
 	"Visual_DataPointsLabels": "Data labels",
 	"Visual_Show": "Show",
 	"Visual_LabelsFill": "Color",
+	"Visual_LabelsLinkText": "Link Text",
+	"Visual_LabelsNodeText": "Node Text",
 	"Visual_Fill": "Fill",
 	"Visual_TextSize": "Text Size",
 	"Visual_Force_Display": "Force display",

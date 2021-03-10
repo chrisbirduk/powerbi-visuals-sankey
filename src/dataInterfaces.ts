@@ -59,14 +59,28 @@ export interface SankeyDiagramRect {
     bottom?: number;
 }
 
-export interface SankeyDiagramNode extends
+export interface SankeyDisplayItem extends
     TooltipEnabledDataPoint,
-    SankeyDiagramRect,
-    SelectableDataPoint {
+    SelectableDataPoint
+{
+};
+
+
+export interface SankeyDiagramNode extends
+    SankeyDisplayItem,
+    //TooltipEnabledDataPoint,
+    SankeyDiagramRect
+    //SelectableDataPoint 
+    {
 
     label: SankeyDiagramLabel;
-    inputWeight: number;
-    outputWeight: number;
+    displayInputWeight: number;
+    displayOrder : any;
+    inputPosWeight : number; // *** CB MODIFY
+    inputNegWeight : number; // *** CB MODIFY
+    displayOutputWeight: number;
+    outputPosWeight : number; // *** CB MODIFY
+    outputNegWeight : number; // *** CB MODIFY
     backwardWeight?: number;
     selftLinkWeight?: number;
     links: SankeyDiagramLink[];
@@ -82,13 +96,18 @@ export interface SankeyDiagramNode extends
 }
 
 export interface SankeyDiagramLink extends
-    TooltipEnabledDataPoint,
-    SelectableDataPoint {
+    SankeyDisplayItem    
+//TooltipEnabledDataPoint
+    // SelectableDataPoint 
+    {
 
     label: string;
     source: SankeyDiagramNode;
     destination: SankeyDiagramNode;
-    weigth: number;
+    displayWeigth : number;
+    displayOrder : any;
+    posWeigth : number;
+    negWeigth: number;
     height?: number;
     dySource?: number;
     dyDestination?: number;
@@ -99,6 +118,7 @@ export interface SankeyDiagramLink extends
 
 export interface SankeyDiagramColumn {
     countOfNodes: number;
+    // *** CB Track this
     sumValueOfNodes: number;
 }
 
@@ -118,6 +138,7 @@ export interface SankeyDiagramCycleDictionary {
 }
 
 export interface SankeyDiagramDataView {
+    defaultLinkText: any;
     nodes: SankeyDiagramNode[];
     links: SankeyDiagramLink[];
     columns: SankeyDiagramColumn[];
